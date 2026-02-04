@@ -16,7 +16,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      background: rgba(0,0,0,0.8);
+      background: black;
       color: #00ffcc;
       font-size: 3rem;
       font-family: Arial, sans-serif;
@@ -34,85 +34,52 @@
          cursor="rayOrigin: mouse"
          raycaster="objects: .clickable">
 
-  <!-- ========== ΦΩΤΙΣΜΟΣ ROOM 1 ========== -->
+  <!-- ΚΑΜΕΡΑ -->
+  <a-entity id="cameraRig" position="0 1.6 4" scale="1 1 1">
+    <a-camera></a-camera>
+  </a-entity>
+
+  <!-- ================= ROOM 1 ================= -->
   <a-light type="ambient" intensity="0.15"></a-light>
   <a-light type="point" position="0 3 2" intensity="0.6" color="#00ffff"></a-light>
 
-  <a-light id="panelLight"
-           type="point"
-           position="4.8 2 2"
-           intensity="0"
-           color="#00ffcc">
-  </a-light>
+  <a-light id="panelLight" type="point" position="4.8 2 2" intensity="0" color="#00ffcc"></a-light>
 
-  <!-- ========== ΚΑΜΕΡΑ ========== -->
-  <a-entity id="cameraRig" position="0 1.6 4">
-    <a-camera wasd-controls look-controls></a-camera>
-  </a-entity>
-
-  <!-- ========== ROOM 1 ========== -->
   <a-plane rotation="-90 0 0" width="10" height="10" color="#444"></a-plane>
   <a-box position="0 2 -5" width="10" height="4" depth="0.2" color="#222"></a-box>
   <a-box position="-5 2 0" width="0.2" height="4" depth="10" color="#222"></a-box>
   <a-box position="5 2 0" width="0.2" height="4" depth="10" color="#222"></a-box>
 
-  <!-- ΚΥΒΟΙ ROOM 1 -->
-  <a-box class="cube clickable" data-correct="false"
-         position="-2 1 -3"
-         width="0.5" height="0.5" depth="0.5"
-         color="#880000"
-         emissive="#000000"
-         animation__shake="property: position; dur: 80; dir: alternate; loop: 6; to: -1.95 1 -3; startEvents: shake">
-  </a-box>
+  <!-- ΚΥΒΟΙ -->
+  <a-box class="cube clickable" data-correct="false" position="-2 1 -3"
+         width="0.5" height="0.5" depth="0.5" color="#880000"
+         animation__shake="property: position; dur: 80; dir: alternate; loop: 6; to: -1.95 1 -3; startEvents: shake"></a-box>
 
-  <a-box class="cube clickable" data-correct="true"
-         position="0 1 -3"
-         width="0.5" height="0.5" depth="0.5"
-         color="#880000"
-         emissive="#000000"
-         animation__shake="property: position; dur: 80; dir: alternate; loop: 6; to: 0.05 1 -3; startEvents: shake">
-  </a-box>
+  <a-box class="cube clickable" data-correct="true" position="0 1 -3"
+         width="0.5" height="0.5" depth="0.5" color="#880000"
+         animation__shake="property: position; dur: 80; dir: alternate; loop: 6; to: 0.05 1 -3; startEvents: shake"></a-box>
 
-  <a-box class="cube clickable" data-correct="false"
-         position="2 1 -3"
-         width="0.5" height="0.5" depth="0.5"
-         color="#880000"
-         emissive="#000000"
-         animation__shake="property: position; dur: 80; dir: alternate; loop: 6; to: 2.05 1 -3; startEvents: shake">
-  </a-box>
+  <a-box class="cube clickable" data-correct="false" position="2 1 -3"
+         width="0.5" height="0.5" depth="0.5" color="#880000"
+         animation__shake="property: position; dur: 80; dir: alternate; loop: 6; to: 2.05 1 -3; startEvents: shake"></a-box>
 
-  <!-- ΠΙΝΑΚΑΣ -->
-  <a-box id="panel" class="clickable"
-         position="4.8 1.4 2"
-         rotation="0 -90 0"
-         width="1" height="0.5" depth="0.2"
-         color="#555"
-         visible="false">
-  </a-box>
+  <a-box id="panel" class="clickable" position="4.8 1.4 2"
+         rotation="0 -90 0" width="1" height="0.5" depth="0.2"
+         color="#555" visible="false"></a-box>
 
-  <!-- ΠΥΛΗ ROOM 1 -->
-  <a-torus id="portal"
-           position="0 2.3 -4.5"
-           radius="0.7"
-           radius-tubular="0.12"
-           color="#00ffff"
-           visible="false"
-           animation__rotate="property: rotation; to: 0 360 0; dur: 4000; loop: true; startEvents: activate"
-           animation__pulse="property: scale; dir: alternate; dur: 1200; to: 1.15 1.15 1.15; loop: true; startEvents: activate">
-  </a-torus>
+  <a-torus id="portal" position="0 2.3 -4.5"
+           radius="0.7" radius-tubular="0.12"
+           color="#00ffff" visible="false"
+           animation__rotate="property: rotation; to: 0 360 0; dur: 4000; loop: true; startEvents: activate"></a-torus>
 
-  <!-- ========== ROOM 2 ========== -->
+  <!-- ================= ROOM 2 ================= -->
   <a-entity id="room2" visible="false">
 
     <a-light type="ambient" intensity="0.6"></a-light>
     <a-light type="point" position="0 4 -20" intensity="1.2"></a-light>
 
-    <a-plane position="0 0 -20" rotation="-90 0 0"
-             width="12" height="12" color="#888"></a-plane>
-
+    <a-plane position="0 0 -20" rotation="-90 0 0" width="12" height="12" color="#888"></a-plane>
     <a-box position="0 2 -26" width="12" height="4" depth="0.2" color="#aaa"></a-box>
-    <a-box position="-6 2 -20" width="0.2" height="4" depth="12" color="#aaa"></a-box>
-    <a-box position="6 2 -20" width="0.2" height="4" depth="12" color="#aaa"></a-box>
 
     <!-- 6 ΚΥΒΟΙ -->
     <a-box class="cube2 clickable" position="-3 1 -18"></a-box>
@@ -123,15 +90,10 @@
     <a-box class="cube2 clickable" position="0 1 -26"></a-box>
 
     <!-- ΤΕΛΙΚΗ ΠΥΛΗ -->
-    <a-torus id="finalPortal"
-             position="0 2.5 -27"
-             radius="0.9"
-             radius-tubular="0.15"
-             color="#00ffcc"
-             visible="false"
-             animation__rotate="property: rotation; to: 0 360 0; dur: 3500; loop: true; startEvents: activate"
-             animation__pulse="property: scale; dir: alternate; dur: 1200; to: 1.2 1.2 1.2; loop: true; startEvents: activate">
-    </a-torus>
+    <a-torus id="finalPortal" position="0 2.5 -27"
+             radius="0.9" radius-tubular="0.15"
+             color="#00ffcc" visible="false"
+             animation__rotate="property: rotation; to: 0 360 0; dur: 3500; loop: true; startEvents: activate"></a-torus>
 
   </a-entity>
 
@@ -141,32 +103,24 @@
 /* ===== ROOM 1 ===== */
 let cubeSolved = false;
 const cameraRig = document.querySelector('#cameraRig');
-const panelLight = document.querySelector('#panelLight');
 
 document.querySelectorAll('.cube').forEach(cube => {
   cube.addEventListener('click', () => {
     if (cubeSolved) return;
-
     if (cube.dataset.correct === "true") {
       cubeSolved = true;
       cube.setAttribute('color', 'green');
       document.querySelector('#panel').setAttribute('visible', 'true');
-      panelLight.setAttribute('intensity', '1.2');
+      document.querySelector('#panelLight').setAttribute('intensity', '1.2');
     } else {
-      cube.setAttribute('emissive', '#ff0000');
       cube.emit('shake');
-      setTimeout(() => cube.setAttribute('emissive', '#000000'), 1000);
     }
   });
 });
 
-/* PANEL */
 document.querySelector('#panel').addEventListener('click', () => {
-  if (!cubeSolved) return;
-
-  const portal = document.querySelector('#portal');
-  portal.setAttribute('visible', 'true');
-  portal.emit('activate');
+  document.querySelector('#portal').setAttribute('visible', 'true');
+  document.querySelector('#portal').emit('activate');
 
   cameraRig.setAttribute('animation', {
     property: 'position',
@@ -185,24 +139,20 @@ let room2Solved = false;
 const cubes2 = document.querySelectorAll('.cube2');
 const finalPortal = document.querySelector('#finalPortal');
 
-// αρχικοποίηση
 cubes2.forEach(cube => {
   cube.setAttribute('width', '0.5');
   cube.setAttribute('height', '0.5');
   cube.setAttribute('depth', '0.5');
   cube.setAttribute('color', '#880000');
-  cube.setAttribute('emissive', '#000000');
   cube.setAttribute(
     'animation__shake',
-    'property: position; dur: 80; dir: alternate; loop: 6; to: 0 0 0; startEvents: shake'
+    'property: rotation; dur: 80; dir: alternate; loop: 6; to: 2 0 2; startEvents: shake'
   );
 });
 
-// τυχαίος σωστός
 const correctCube2 = cubes2[Math.floor(Math.random() * cubes2.length)];
 correctCube2.dataset.correct = "true";
 
-// clicks
 cubes2.forEach(cube => {
   cube.addEventListener('click', () => {
     if (room2Solved) return;
@@ -210,16 +160,31 @@ cubes2.forEach(cube => {
     if (cube.dataset.correct === "true") {
       room2Solved = true;
       cube.setAttribute('color', 'green');
+
       finalPortal.setAttribute('visible', 'true');
       finalPortal.emit('activate');
 
+      // 🌀 ΡΟΥΦΗΓΜΑ ΚΑΜΕΡΑΣ
+      cameraRig.setAttribute('animation__move', {
+        property: 'position',
+        to: '0 2.5 -27',
+        dur: 2500,
+        easing: 'easeInQuad'
+      });
+
+      cameraRig.setAttribute('animation__scale', {
+        property: 'scale',
+        to: '0.05 0.05 0.05',
+        dur: 2500,
+        easing: 'easeInQuad'
+      });
+
       setTimeout(() => {
         document.querySelector('#overlay').style.display = 'flex';
-      }, 2500);
+      }, 2700);
+
     } else {
-      cube.setAttribute('emissive', '#ff0000');
       cube.emit('shake');
-      setTimeout(() => cube.setAttribute('emissive', '#000000'), 1000);
     }
   });
 });
